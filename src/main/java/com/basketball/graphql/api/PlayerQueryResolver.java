@@ -20,7 +20,7 @@ public class PlayerQueryResolver implements GraphQLQueryResolver {
         return PlayerRepository.findAllBy();
     }
 
-    public List<Player> getPlayers(String position) {
+    public List<Player> getPlayersByPosition(String position) {
         return PlayerRepository.getByPositionLike(position);
     }
 
