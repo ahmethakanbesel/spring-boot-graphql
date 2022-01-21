@@ -21,7 +21,7 @@
   }
 }
 ```
-### Get Player By Position
+### Get Players By Position
 ```graphql
 {
   getPlayersByPosition(position: "Center(C)") {
