@@ -1,6 +1,6 @@
 ## Queries
 ### Get All Players
-```
+```graphql
 {
   getPlayers {
     id
@@ -11,7 +11,7 @@
 }
 ```
 ### Get Player By ID
-```
+```graphql
 {
   getById(id: 1) {
     id
@@ -22,7 +22,7 @@
 }
 ```
 ### Get Player By Position
-```
+```graphql
 {
   getPlayersByPosition(position: "Center(C)") {
     id
@@ -34,7 +34,7 @@
 ```
 ## Mutations
 ### Create Player
-```
+```graphql
 mutation {
   createPlayer(player: {name: "Name", surname: "Surname", position: "Shooting guard(SG)"}) {
     id
@@ -45,7 +45,7 @@ mutation {
 }
 ```
 ### Delete Player
-```
+```graphql
 mutation {
   deletePlayer(id: 1)
 }
