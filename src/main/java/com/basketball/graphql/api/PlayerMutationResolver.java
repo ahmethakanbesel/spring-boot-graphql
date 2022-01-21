@@ -20,6 +20,15 @@ public class PlayerMutationResolver implements GraphQLMutationResolver {
         return PlayerRepository.save(dtoToEntity(PlayerDto));
     }
 
+    public Boolean deletePlayer(long playerId) {
+        try {
+            PlayerRepository.deleteById(playerId);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     private Player dtoToEntity(PlayerDto PlayerDto) {
         Player Player = new Player();
         Player.setName(PlayerDto.getName());

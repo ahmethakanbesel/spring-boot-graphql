@@ -19,4 +19,5 @@ type Query {
 
 type Mutation {
     createPlayer(player: PlayerDto):Player
+    deletePlayer(id: ID):Boolean
 }
