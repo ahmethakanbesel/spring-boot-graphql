@@ -16,7 +16,7 @@ public class PlayerQueryResolver implements GraphQLQueryResolver {
 
     private final PlayerRepository PlayerRepository;
 
-    public List<Player> getAllPlayers() {
+    public List<Player> getPlayers() {
         return PlayerRepository.findAllBy();
     }
 

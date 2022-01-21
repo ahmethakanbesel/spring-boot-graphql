@@ -12,6 +12,7 @@ input PlayerDto {
 }
 
 type Query {
+    getPlayers:[Player]
     getPlayers(position: String):[Player]
     getById(id: ID):Player
 }
