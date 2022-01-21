@@ -5,18 +5,21 @@ import com.basketball.graphql.dto.PlayerDto;
 import com.basketball.graphql.entity.Player;
 import com.basketball.graphql.repo.PlayerRepository;
 
-import java.util.Date;
-import java.util.Objects;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
 public class PlayerMutationResolver implements GraphQLMutationResolver {
 
     private final PlayerRepository PlayerRepository;
-    private final String[] allowedPositions = {"Point guard(PG)", "Shooting guard(SG)", "Small forward(SF)", "Power forward(PF)", "Center(C)"};
+    private static final Set<String> allowedPositions = new HashSet<String>(Arrays.asList(
+            "Point guard(PG)", "Shooting guard(SG)", "Small forward(SF)", "Power forward(PF)", "Center(C)"));
 
     public Player createPlayer(PlayerDto PlayerDto) {
         return PlayerRepository.save(dtoToEntity(PlayerDto));
@@ -33,14 +36,7 @@ public class PlayerMutationResolver implements GraphQLMutationResolver {
 
     private Player dtoToEntity(PlayerDto PlayerDto) {
         String position = PlayerDto.getPosition();
-        boolean isPositionValid = false;
-        for (String allowedPosition : allowedPositions) {
-            if (position.equals(allowedPosition)) {
-                isPositionValid = true;
-                break;
-            }
-        }
-        if (isPositionValid) {
+        if (allowedPositions.contains(position)) {
             Player Player = new Player();
             Player.setName(PlayerDto.getName());
             Player.setSurname(PlayerDto.getSurname());
